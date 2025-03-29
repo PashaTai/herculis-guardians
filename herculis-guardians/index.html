@@ -3,48 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Herculis Guardians: Location de coffres-forts en Suisse avec confidentialité totale</title>
+    <title>Herculis Guardians - Swiss Safe Deposit Boxes</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
         
         body {
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            color: #f0ede6;
             line-height: 1.6;
+            background-color: #111111;
+        }
+        
+        h1, h2, h3, h4, .logo {
+            font-family: 'Playfair Display', serif;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
         }
         
-        /* Responsive Base Styles */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        /* Mobile-first approach */
-        html {
-            font-size: 16px;
-        }
-        
-        @media (max-width: 768px) {
-            html {
-                font-size: 14px;
-            }
-        }
-        
         header {
-            background-color: #002D62;
-            color: white;
-            padding: 20px 0;
+            padding: 30px 0;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
         }
         
         .header-content {
@@ -55,35 +47,13 @@
         
         .logo {
             font-size: 28px;
-            font-weight: bold;
-            z-index: 3;
+            font-weight: 700;
+            color: #f0ede6;
+            text-decoration: none;
         }
         
         .logo span {
-            color: #FFD700;
-        }
-        
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 3;
-        }
-        
-        .menu-toggle span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: white;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-        
-        nav {
-            transition: transform 0.3s ease;
+            color: #cd9b58;
         }
         
         nav ul {
@@ -92,414 +62,218 @@
         }
         
         nav ul li {
-            margin-left: 30px;
+            margin-left: 40px;
         }
         
         nav ul li a {
-            color: white;
+            color: #f0ede6;
             text-decoration: none;
+            font-size: 18px;
             font-weight: 500;
             transition: color 0.3s;
         }
         
         nav ul li a:hover {
-            color: #FFD700;
-        }
-        
-        /* Mobile Menu */
-        @media (max-width: 991px) {
-            .menu-toggle {
-                display: flex;
-            }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background-color: #002D62;
-                padding: 80px 20px 20px;
-                transform: translateX(100%);
-                z-index: 2;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            }
-            
-            nav.active {
-                transform: translateX(0);
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .menu-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                z-index: 1;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-            
-            .menu-overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
+            color: #cd9b58;
         }
         
         .hero {
-            background: linear-gradient(rgba(0, 45, 98, 0.8), rgba(0, 45, 98, 0.8)), url('/api/placeholder/1200/600') center/cover;
-            padding: 100px 0;
-            text-align: center;
-            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #111111;
+        }
+        
+        .hero-content {
+            width: 100%;
+            display: flex;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            width: 50%;
+            padding-right: 50px;
+        }
+        
+        .hero-image {
+            width: 50%;
+            height: 100vh;
+            position: absolute;
+            right: 0;
+            top: 0;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
         
         .hero h1 {
-            font-size: 48px;
+            font-size: 120px;
+            line-height: 1;
             margin-bottom: 20px;
             font-weight: 700;
+            letter-spacing: -0.02em;
         }
         
         .hero p {
-            font-size: 22px;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 600px;
+            line-height: 1.4;
         }
         
         .hero-form {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .form-group {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            margin-top: 60px;
+            max-width: 800px;
         }
         
-        @media (max-width: 767px) {
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .hero-form {
-                padding: 20px;
-            }
+        .form-input {
+            background-color: transparent;
+            border: 1px solid rgba(240, 237, 230, 0.3);
+            color: #f0ede6;
+            padding: 20px 30px;
+            font-size: 18px;
+            width: 300px;
+            margin-right: 15px;
+            font-family: 'Inter', sans-serif;
+            border-radius: 0;
         }
         
-        .form-group input {
-            padding: 15px 20px;
-            border-radius: 50px;
-            border: none;
-            font-size: 16px;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
+        .form-input::placeholder {
+            color: rgba(240, 237, 230, 0.6);
         }
         
-        .form-group input::placeholder {
-            color: #777;
-        }
-        
-        .form-group input:focus {
+        .form-input:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #FFD700;
+            border-color: #cd9b58;
         }
         
         .cta-button {
-            display: inline-block;
-            background-color: #FFD700;
-            color: #002D62;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #cd9b58;
+            color: #111111;
             border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: 600;
             cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
         }
         
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #d9ad74;
         }
         
         .benefits {
-            padding: 80px 0;
-            background-color: #f9f9f9;
+            padding: 120px 0;
+            background-color: #191919;
         }
         
         .section-title {
             text-align: center;
-            font-size: 36px;
-            margin-bottom: 60px;
-            color: #002D62;
+            font-size: 60px;
+            margin-bottom: 80px;
+            font-weight: 600;
         }
         
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 50px;
         }
         
         .benefit-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 10px;
+            background-color: #222;
+            padding: 50px 40px;
+            border-radius: 0;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        @media (max-width: 991px) {
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         .benefit-icon {
-            font-size: 50px;
-            color: #002D62;
-            margin-bottom: 20px;
+            font-size: 60px;
+            color: #cd9b58;
+            margin-bottom: 30px;
         }
         
         .benefit-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #002D62;
-        }
-        
-        .unique-offer {
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .offer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .offer-badge {
-            display: inline-block;
-            background-color: #002D62;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
+            font-size: 28px;
             margin-bottom: 20px;
+            font-weight: 600;
         }
         
-        .testimonials {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        @media (max-width: 991px) {
-            .testimonial-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .testimonial-text::before {
-            content: '"';
-            font-size: 60px;
-            color: #002D62;
-            opacity: 0.2;
-            position: absolute;
-            top: -20px;
-            left: -15px;
-        }
-        
-        .client-info {
-            display: flex;
-            align-items: center;
-        }
-        
-        .client-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            background-color: #ddd;
-        }
-        
-        .client-details h4 {
-            margin-bottom: 5px;
-        }
-        
-        .client-details p {
-            color: #777;
-            font-size: 14px;
-        }
-        
-        .how-it-works {
-            padding: 80px 0;
-        }
-        
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-        
-        @media (max-width: 991px) {
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .step-card {
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: #002D62;
-            color: white;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0 auto 20px;
+        .benefit-card p {
+            font-size: 20px;
         }
         
         .pricing {
-            padding: 80px 0;
-            background-color: #f9f9f9;
+            padding: 120px 0;
+            background-color: #111111;
         }
         
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        @media (max-width: 991px) {
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
+            gap: 40px;
         }
         
         .pricing-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: #191919;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
         
         .pricing-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
         }
         
         .pricing-header {
-            background-color: #002D62;
-            color: white;
-            padding: 30px 20px;
+            background-color: #222;
+            padding: 40px 30px;
             text-align: center;
         }
         
         .pricing-header h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         
         .price {
-            font-size: 36px;
-            font-weight: bold;
+            font-size: 48px;
+            font-weight: 700;
+            color: #cd9b58;
         }
         
         .price span {
-            font-size: 18px;
-            font-weight: normal;
+            font-size: 24px;
+            font-weight: 400;
         }
         
         .pricing-features {
-            padding: 30px 20px;
+            padding: 40px 30px;
         }
         
         .pricing-features ul {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .pricing-features ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(240, 237, 230, 0.1);
+            font-size: 20px;
         }
         
         .pricing-features ul li:last-child {
@@ -508,159 +282,55 @@
         
         .pricing-features .cta-button {
             width: 100%;
-            text-align: center;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-        }
-        
-        .security-features {
-            padding: 80px 0;
-        }
-        
-        .security-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-            align-items: center;
-        }
-        
-        @media (max-width: 991px) {
-            .security-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .security-content {
-                order: 1;
-            }
-            
-            .security-image {
-                order: 0;
-                margin-bottom: 30px;
-            }
-        }
-        
-        .security-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: #002D62;
-        }
-        
-        .security-list {
-            list-style: none;
-        }
-        
-        .security-list li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        .security-list li:before {
-            content: "✓";
-            color: #002D62;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        
-        .security-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .security-image img {
-            width: 100%;
             display: block;
-        }
-        
-        .faq {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .faq-grid {
-            display: grid;
-            gap: 20px;
-        }
-        
-        .faq-item {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-question {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #002D62;
+            text-align: center;
         }
         
         .contact {
-            padding: 80px 0;
+            padding: 120px 0;
+            background-color: #191919;
             text-align: center;
         }
         
         .contact-card {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: #002D62;
-            color: white;
-            padding: 60px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #222;
+            padding: 80px 60px;
         }
         
         .contact-card h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 60px;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
         
         .contact-card p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
+            font-size: 24px;
+            margin-bottom: 40px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         
         footer {
-            background-color: #002D62;
-            color: white;
-            padding: 50px 0;
+            background-color: #111111;
+            padding: 80px 0 40px;
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-        
-        @media (max-width: 991px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-col {
-                margin-bottom: 30px;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
+            gap: 60px;
+            margin-bottom: 60px;
         }
         
         .footer-col h4 {
-            font-size: 18px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .footer-col h4:after {
@@ -668,9 +338,13 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 50px;
             height: 2px;
-            background-color: #FFD700;
+            background-color: #cd9b58;
+        }
+        
+        .footer-col p, .footer-col ul li a {
+            font-size: 18px;
         }
         
         .footer-col ul {
@@ -678,173 +352,159 @@
         }
         
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .footer-col ul li a {
-            color: #ddd;
+            color: #f0ede6;
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .footer-col ul li a:hover {
-            color: #FFD700;
+            color: #cd9b58;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 50px;
-            color: #ddd;
-            font-size: 14px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(240, 237, 230, 0.1);
+            font-size: 16px;
+            color: rgba(240, 237, 230, 0.6);
         }
-
-        /* Скрыть первый элемент, который "идиотский" */
-        body > h2:first-of-type,
-        body > p:first-of-type {
-            display: none;
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 90px;
+            }
+            
+            .hero p {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                width: 100%;
+                padding-right: 0;
+                padding-top: 80px;
+            }
+            
+            .hero-image {
+                width: 100%;
+                height: 50vh;
+                position: relative;
+                margin-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 70px;
+            }
+            
+            .hero p {
+                font-size: 24px;
+            }
+            
+            .benefits-grid, .pricing-grid, .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .hero-form {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cta-button {
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 50px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .benefits-grid, .pricing-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            nav ul {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">Herculis <span>Guardians</span></div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <a href="#" class="logo">Herculis <span>Guardians</span></a>
             <nav>
                 <ul>
-                    <li><a href="#benefits">Avantages</a></li>
-                    <li><a href="#how-it-works">Comment ça marche</a></li>
-                    <li><a href="#pricing">Tarifs</a></li>
-                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="menu-overlay"></div>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Coffres-forts suisses avec confidentialité absolue</h1>
-            <p>Protégez vos biens de valeur dans le système bancaire le plus fiable au monde avec un accès 24/7 et un anonymat total</p>
-            
-            <div class="hero-form">
-                <form action="https://formspree.io/f/xpwpjjdv" method="POST">
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Votre Email" required>
-                        <input type="tel" name="phone" placeholder="Votre numéro de téléphone" required>
-                        <button type="submit" class="cta-button">Réserver un coffre maintenant</button>
-                    </div>
-                </form>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>SECURE.<br>PRIVATE.</h1>
+                <p>Rent a safe deposit box with maximum security and confidentiality.</p>
+                
+                <div class="hero-form">
+                    <form action="https://formspree.io/f/xpwpjjdv" method="POST">
+                        <input type="email" name="email" placeholder="Email address" class="form-input" required>
+                        <input type="tel" name="phone" placeholder="Phone" class="form-input" required>
+                        <button type="submit" class="cta-button">GET STARTED</button>
+                    </form>
+                </div>
             </div>
+        </div>
+        <div class="hero-image">
+            <img src="image/image1.png" alt="Safe deposit box with key">
         </div>
     </section>
 
     <section class="benefits" id="benefits">
         <div class="container">
-            <h2 class="section-title">Pourquoi nos clients nous choisissent</h2>
+            <h2 class="section-title">Why Choose Us</h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">🔒</div>
-                    <h3>Confidentialité absolue</h3>
-                    <p>La législation suisse garantit une protection totale de vos données et du contenu de votre coffre</p>
+                    <h3>Absolute Confidentiality</h3>
+                    <p>Swiss legislation guarantees complete protection of your data and the contents of your safe.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">🕒</div>
-                    <h3>Accès 24h/24 et 7j/7</h3>
-                    <p>Visitez votre coffre à tout moment, 365 jours par an, sans rendez-vous préalable</p>
+                    <h3>24/7 Access</h3>
+                    <p>Visit your safe at any time, 365 days a year, with no appointment needed.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">🛡️</div>
-                    <h3>Niveau de protection maximal</h3>
-                    <p>Système de sécurité multicouche, contrôle biométrique et garde armée</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="unique-offer">
-        <div class="container">
-            <div class="offer-content">
-                <span class="offer-badge">Offre unique</span>
-                <h2 class="section-title">Stockage international de biens de valeur sans questions ni documents</h2>
-                <p>Uniquement chez Herculis Guardians, vous pouvez louer un coffre-fort sans fournir de passeport, de déclarations fiscales ou d'explications sur l'origine des fonds. Nous valorisons votre vie privée et respectons les traditions du secret bancaire suisse.</p>
-                <a href="#pricing" class="cta-button">Choisir un coffre</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">Ce que disent nos clients</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        <p>J'ai déplacé ma collection de bijoux de Londres à Zurich et je suis maintenant totalement serein quant à leur sécurité. Le plus haut niveau de service et de confidentialité.</p>
-                    </div>
-                    <div class="client-info">
-                        <div class="client-image"></div>
-                        <div class="client-details">
-                            <h4>Alexandre V.</h4>
-                            <p>Entrepreneur, Russie</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        <p>La possibilité d'accéder à mon coffre à toute heure du jour ou de la nuit est exactement ce dont j'ai besoin en raison de mes fréquents voyages d'affaires. Herculis Guardians offre un service de classe premium.</p>
-                    </div>
-                    <div class="client-info">
-                        <div class="client-image"></div>
-                        <div class="client-details">
-                            <h4>Hélène K.</h4>
-                            <p>Investisseur, EAU</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        <p>Après les changements politiques dans mon pays, je cherchais un endroit sûr pour conserver les objets de valeur de ma famille. Herculis Guardians a assuré non seulement la sécurité, mais aussi l'anonymat complet.</p>
-                    </div>
-                    <div class="client-info">
-                        <div class="client-image"></div>
-                        <div class="client-details">
-                            <h4>André M.</h4>
-                            <p>Collectionneur, Ukraine</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Comment louer un coffre-fort</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Faites une demande</h3>
-                    <p>Remplissez le formulaire sur le site ou appelez-nous</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Choisissez un coffre</h3>
-                    <p>Décidez de la taille et de la durée de location</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Effectuez le paiement</h3>
-                    <p>Payez par le moyen qui vous convient, y compris la cryptomonnaie</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>Obtenez l'accès</h3>
-                    <p>Utilisez votre coffre à tout moment</p>
+                    <h3>Maximum Security</h3>
+                    <p>Multi-layer security system, biometric control, and armed guards.</p>
                 </div>
             </div>
         </div>
@@ -852,111 +512,57 @@
 
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title">Tarifs de location des coffres-forts</h2>
+            <h2 class="section-title">Our Safe Deposit Boxes</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3>Basique</h3>
-                        <div class="price">2,500 CHF <span>/an</span></div>
+                        <h3>Basic</h3>
+                        <div class="price">2,500 CHF <span>/year</span></div>
                     </div>
                     <div class="pricing-features">
                         <ul>
-                            <li>Coffre-fort de petite taille (10x30x40 cm)</li>
-                            <li>Accès 24h/24 et 7j/7</li>
-                            <li>Assurance de base jusqu'à 100 000 CHF</li>
-                            <li>Identification biométrique</li>
-                            <li>Confidentialité des données</li>
+                            <li>Small safe (10x30x40 cm)</li>
+                            <li>24/7 access</li>
+                            <li>Basic insurance up to 100,000 CHF</li>
+                            <li>Biometric identification</li>
+                            <li>Data confidentiality</li>
                         </ul>
-                        <a href="#contact" class="cta-button">Choisir ce plan</a>
+                        <a href="#contact" class="cta-button">Select Plan</a>
                     </div>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Premium</h3>
-                        <div class="price">5,000 CHF <span>/an</span></div>
+                        <div class="price">5,000 CHF <span>/year</span></div>
                     </div>
                     <div class="pricing-features">
                         <ul>
-                            <li>Coffre-fort de taille moyenne (20x40x60 cm)</li>
-                            <li>Accès 24h/24 et 7j/7</li>
-                            <li>Assurance étendue jusqu'à 500 000 CHF</li>
-                            <li>Identification biométrique</li>
-                            <li>Confidentialité selon les normes suisses</li>
-                            <li>Salle privée pour examiner le contenu</li>
+                            <li>Medium safe (20x40x60 cm)</li>
+                            <li>24/7 access</li>
+                            <li>Extended insurance up to 500,000 CHF</li>
+                            <li>Biometric identification</li>
+                            <li>Swiss standard confidentiality</li>
+                            <li>Private room for content examination</li>
                         </ul>
-                        <a href="#contact" class="cta-button">Choisir ce plan</a>
+                        <a href="#contact" class="cta-button">Select Plan</a>
                     </div>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>VIP</h3>
-                        <div class="price">12,000 CHF <span>/an</span></div>
+                        <div class="price">12,000 CHF <span>/year</span></div>
                     </div>
                     <div class="pricing-features">
                         <ul>
-                            <li>Coffre-fort de grande taille (30x60x80 cm)</li>
-                            <li>Accès 24h/24 et 7j/7 avec entrée séparée</li>
-                            <li>Assurance premium jusqu'à 2 000 000 CHF</li>
-                            <li>Protection biométrique avancée</li>
-                            <li>Confidentialité absolue</li>
-                            <li>Gestionnaire personnel 24h/24</li>
-                            <li>Transport des objets de valeur</li>
+                            <li>Large safe (30x60x80 cm)</li>
+                            <li>24/7 access with separate entrance</li>
+                            <li>Premium insurance up to 2,000,000 CHF</li>
+                            <li>Advanced biometric protection</li>
+                            <li>Absolute confidentiality</li>
+                            <li>Personal manager 24/7</li>
+                            <li>Valuables transportation</li>
                         </ul>
-                        <a href="#contact" class="cta-button">Choisir ce plan</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="security-features">
-        <div class="container">
-            <div class="security-grid">
-                <div class="security-content">
-                    <h2>Système de sécurité inégalé</h2>
-                    <ul class="security-list">
-                        <li>Coffres-forts ultra-résistants en alliage de titane avec résistance au feu et aux effractions</li>
-                        <li>Système d'authentification à plusieurs niveaux avec vérification biométrique</li>
-                        <li>Vidéosurveillance permanente avec intelligence artificielle</li>
-                        <li>Garde armée professionnelle 24h/24 et 7j/7</li>
-                        <li>Chambre forte située dans un bunker protégé contre les IEM et les radiations</li>
-                        <li>Système d'alimentation électrique autonome</li>
-                        <li>Stockage de secours dans un autre canton suisse</li>
-                    </ul>
-                </div>
-                <div class="security-image">
-                    <img src="/api/placeholder/600/400" alt="Système de sécurité Herculis Guardians">
-                </div>
-            </div>
-            </div>
-    </section>
-
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Questions fréquemment posées</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">Quels documents sont nécessaires pour louer un coffre-fort ?</div>
-                    <div class="faq-answer">
-                        <p>Contrairement à d'autres entreprises, nous proposons une option de location de coffre-fort sans fournir de pièce d'identité. Il suffit de choisir un forfait, d'effectuer le paiement et de recevoir un code d'accès anonyme.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Y a-t-il des restrictions sur le stockage des objets de valeur ?</div>
-                    <div class="faq-answer">
-                        <p>Vous pouvez stocker n'importe quel objet de valeur, à l'exception des substances explosives, radioactives et biologiquement dangereuses. Nous ne vérifions pas le contenu de votre coffre-fort et ne posons pas de questions.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Comment la confidentialité est-elle assurée ?</div>
-                    <div class="faq-answer">
-                        <p>Notre entreprise fonctionne conformément aux lois suisses sur le secret bancaire. Nous ne conservons pas d'informations sur votre identité, ne tenons pas de registre des visites et ne divulguons pas de données à des tiers.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Que se passe-t-il en cas de force majeure ?</div>
-                    <div class="faq-answer">
-                        <p>Tous les coffres-forts sont assurés contre les catastrophes naturelles, les incendies et autres situations imprévues. En cas de force majeure, vous recevrez une compensation égale à la valeur déclarée des objets de valeur stockés.</p>
+                        <a href="#contact" class="cta-button">Select Plan</a>
                     </div>
                 </div>
             </div>
@@ -966,9 +572,9 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-card">
-                <h2>Prêt à assurer la sécurité de vos objets de valeur ?</h2>
-                <p>Contactez-nous dès aujourd'hui, et notre consultant vous expliquera toutes les nuances de la location d'un coffre-fort en Suisse</p>
-                <a href="#" class="cta-button">Réserver un coffre</a>
+                <h2>Ready to Secure Your Valuables?</h2>
+                <p>Contact us today, and our consultant will explain all the nuances of renting a safe deposit box in Switzerland.</p>
+                <a href="#" class="cta-button">Reserve a Safe</a>
             </div>
         </div>
     </section>
@@ -978,24 +584,24 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Herculis Guardians</h4>
-                    <p>Votre partenaire de confiance pour le stockage d'objets de valeur en Suisse depuis 1996.</p>
+                    <p>Your trusted partner for storing valuables in Switzerland since 1996.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#">Location de coffres-forts</a></li>
-                        <li><a href="#">Transport d'objets de valeur</a></li>
-                        <li><a href="#">Assurance</a></li>
-                        <li><a href="#">Service VIP</a></li>
+                        <li><a href="#">Safe Deposit Box Rental</a></li>
+                        <li><a href="#">Valuables Transportation</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">VIP Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Information</h4>
                     <ul>
-                        <li><a href="#">À propos de l'entreprise</a></li>
-                        <li><a href="#">Emplacement</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">About the Company</a></li>
+                        <li><a href="#">Location</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1008,47 +614,14 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Herculis Guardians. Tous droits réservés.</p>
+                <p>&copy; 2025 Herculis Guardians. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
-            const menuOverlay = document.querySelector('.menu-overlay');
-            
-            function toggleMenu() {
-                menuToggle.classList.toggle('active');
-                nav.classList.toggle('active');
-                menuOverlay.classList.toggle('active');
-                document.body.classList.toggle('menu-open');
-            }
-            
-            menuToggle.addEventListener('click', toggleMenu);
-            menuOverlay.addEventListener('click', toggleMenu);
-            
-            // Close menu when clicking on nav links
-            const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (nav.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                });
-            });
-            
-            // Handle viewport changes
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 991 && nav.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    nav.classList.remove('active');
-                    menuOverlay.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                }
-            });
+            // Mobile responsive menu logic could go here
         });
     </script>
 </body>
