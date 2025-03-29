@@ -1,6 +1,5 @@
-<h2>Prêt à assurer la sécurité de vos objets de valeur ?</h2>
-                <p>Contactez-nous dès aujourd'hui, et notre consultant vous expliquera toutes les nuances de la location d'un coffre-fort en Su<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -698,6 +697,12 @@
             color: #ddd;
             font-size: 14px;
         }
+
+        /* Скрыть первый элемент, который "идиотский" */
+        body > h2:first-of-type,
+        body > p:first-of-type {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -728,7 +733,7 @@
             <p>Protégez vos biens de valeur dans le système bancaire le plus fiable au monde avec un accès 24/7 et un anonymat total</p>
             
             <div class="hero-form">
-                <form action="#" method="POST">
+                <form action="https://formspree.io/f/xpwpjjdv" method="POST">
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Votre Email" required>
                         <input type="tel" name="phone" placeholder="Votre numéro de téléphone" required>
@@ -738,13 +743,7 @@
             </div>
         </div>
     </section>
-<form action="https://formspree.io/f/xpwpjjdv" method="POST">
-    <div class="form-group">
-        <input type="email" name="email" placeholder="Votre Email" required>
-        <input type="tel" name="phone" placeholder="Votre numéro de téléphone" required>
-        <button type="submit" class="cta-button">Réserver un coffre maintenant</button>
-    </div>
-</form>
+
     <section class="benefits" id="benefits">
         <div class="container">
             <h2 class="section-title">Pourquoi nos clients nous choisissent</h2>
@@ -929,7 +928,7 @@
                     <img src="/api/placeholder/600/400" alt="Système de sécurité Herculis Guardians">
                 </div>
             </div>
-        </div>
+            </div>
     </section>
 
     <section class="faq">
@@ -1013,14 +1012,13 @@
             </div>
         </div>
     </footer>
-    <!-- Script pour collecter les données du formulaire -->
+
     <script>
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav');
             const menuOverlay = document.querySelector('.menu-overlay');
-            const contactForm = document.querySelector('.hero-form form');
             
             function toggleMenu() {
                 menuToggle.classList.toggle('active');
@@ -1051,34 +1049,6 @@
                     document.body.classList.remove('menu-open');
                 }
             });
-            
-            // Gestion du formulaire
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const email = contactForm.querySelector('input[name="email"]').value;
-                    const phone = contactForm.querySelector('input[name="phone"]').value;
-                    
-                    // Simple validation
-                    if (!email || !phone) {
-                        alert('Veuillez remplir tous les champs');
-                        return;
-                    }
-                    
-                    // Normally we would send this to a server
-                    console.log('Form submitted:', { email, phone });
-                    
-                    // Store in localStorage for demonstration
-                    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-                    leads.push({ email, phone, date: new Date() });
-                    localStorage.setItem('leads', JSON.stringify(leads));
-                    
-                    // Success message
-                    alert('Merci pour votre intérêt ! Nous vous contacterons bientôt.');
-                    contactForm.reset();
-                });
-            }
         });
     </script>
 </body>
